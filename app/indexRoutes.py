@@ -10,7 +10,5 @@ def home():
 
 @application.route("/staticFiles/<path:path>", methods=["GET"])
 def send_static(path):
-    print(path)
-    if path:
-        print("Existe 1 1")
+
     return send_from_directory("../static", path)

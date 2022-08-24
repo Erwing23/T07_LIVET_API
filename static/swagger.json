@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "description": "sean",
+    "description": "Flask API LIVET",
     "version": "1.0.0",
-    "title": "Seans-Python3-Flask-Rest-Boilerplate",
+    "title": "Livet REST API FLASK ",
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
@@ -26,7 +26,7 @@
   "paths": {
     "/users": {
       "get": {
-        "tags": ["Users Request"],
+        "tags": ["User Request"],
         "summary": "Returns Users Data",
         "responses": {
           "200": {
@@ -37,16 +37,17 @@
           }
         }
       },
+
       "post": {
-        "tags": ["Book Request"],
-        "summary": "Create a new book request system",
+        "tags": ["User Request"],
+        "summary": "Create a new user",
         "requestBody": {
-          "description": "Book Request Post Object",
+          "description": "User Request Post Object",
           "required": true,
           "content": {
-            " multipart/form-data": {
+            "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/bookRequestPostBody"
+                "$ref": "#/components/schemas/usersRequestPostBody"
               }
             }
           }
@@ -61,6 +62,43 @@
           },
           "400": {
             "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/users/{name}": {
+      "parameters": [
+        {
+          "name": "name",
+          "in": "path",
+          "required": true,
+          "description": "name of the user that we want to match",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["User Request"],
+        "summary": "Get book request with given ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "description": "User Request name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/bookRequest"
+            }
+          },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed. Book request not found."
           }
         }
       }
@@ -195,6 +233,31 @@
           "email": {
             "type": "email",
             "format": "email"
+          }
+        }
+      },
+      "usersRequestPostBody": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "rol": {
+            "type": "string",
+            "format": "string"
+          },
+          "gender": {
+            "type": "string",
+            "format": "string"
+          },
+          "age": {
+            "type": "string",
+            "format": "string"
           }
         }
       },

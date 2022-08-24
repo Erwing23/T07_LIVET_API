@@ -31,9 +31,9 @@ def get_Users():
     return Response(response=response, mimetype="application/json")
 
 
-@application.route("/users/<id>", methods=["GET"])
-def get_User(id):
-    user = db.users.find_one({"_id": objectid.ObjectId(id)})
+@application.route("/users/<name>", methods=["GET"])
+def get_User(name):
+    user = db.users.find_one({"name": name})
     response = json_util.dumps(user)
     return Response(response=response, mimetype="application/json")
 
