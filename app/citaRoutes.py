@@ -21,12 +21,12 @@ def get_Citas(paciente):
 @application.route("/citas", methods=["POST"])
 def create_Cita():
     # Recieving Data
-    doctor = request.form.get("doctor")
-    paciente = request.form.get("paciente")
-    timeStart = request.form.get("timeStart")
-    timeEnd = request.form.get("timeEnd")
-    area = request.form.get("area")
-    date = request.form.get("date")
+    doctor = request.json["doctor"]
+    paciente = request.json["paciente"]
+    timeStart = request.json["timeStart"]
+    timeEnd = request.json["timeEnd"]
+    area = request.json["area"]
+    date = request.json["date"]
 
     if doctor and paciente and timeStart and timeEnd and area and date:
 
