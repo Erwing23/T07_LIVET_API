@@ -17,7 +17,7 @@ def create_User():
         response = json_util.dumps(user)
         db.users.insert_one(user)
 
-        return response
+        return Response(response=response, mimetype="application/json")
     else:
         return {"message": "Failed"}
 
